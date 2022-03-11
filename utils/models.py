@@ -669,8 +669,6 @@ class HardShareTransformer(nn.Module):
             )
 
 
-
-
 class SoftShareTransformer(nn.Module):
     """
     Mulitask architecture with soft parameter sharing via l_2 regularization
