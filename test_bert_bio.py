@@ -8,27 +8,19 @@
 # E-mail: eivindgg@ifi.uio.no
 
 
-try:
-    from exam.utils.preprocessing import OurDataset, pad_b
-    from exam.utils.models import Transformer, TransformerMTL
-except:
-    from utils.preprocessing import OurDataset, pad_b
-    from utils.models import Transformer, TransformerMTL
+from utils.preprocessing import OurDataset, pad_b
+from utils.models import Transformer, TransformerMTL
 
 from torch.utils.data import DataLoader
 import torch
 
 
-NORBERT = "/cluster/shared/nlpl/data/vectors/latest/216"
-# NORBERT = 'exam/saga/216'
+# NORBERT = 'ltgoslo/norbert'
+NORBERT = 'data/216'
 
-train_file = '/cluster/projects/nn9851k/IN5550/fabior/train.conll'
-dev_file = '/cluster/projects/nn9851k/IN5550/fabior/dev.conll'
-test_file = '/cluster/projects/nn9851k/IN5550/fabior/test.conll'
-
-# train_file = 'exam/data/train.conll'
-# dev_file = 'exam/data/dev.conll'
-# test_file = 'exam/data/test.conll'
+train_file = 'data/train.conll'
+dev_file = 'data/dev.conll'
+test_file = 'data/test.conll'
 
 
 train_dataset = OurDataset(
@@ -113,4 +105,4 @@ model_bio.fit(
 )
 
 binary_f1, propor_f1 = model_bio.evaluate(test_loader)
-# torch.save(model_bio, "exam/transformer_bio.pt")
+torch.save(model_bio, "data/transformer_bio.pt")

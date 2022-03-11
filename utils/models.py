@@ -1250,8 +1250,8 @@ class Transformer(torch.nn.Module):
                 )
                 _loss.append(loss.item())
 
-                if verbose:
-                    print(f"Batch: {b}  |"
+                if b==0:
+                    print(f"Epoch: {epoch}  |"
                           f"  Train Loss: {loss}  |")
 
             if self._early_stop(epoch_idx=epoch,
@@ -1554,8 +1554,8 @@ class TransformerMTL(Transformer):
 
                 _loss.append(loss.item())
 
-                if verbose:
-                    print(f"Batch: {b}  |"
+                if b==0:
+                    print(f"Epoch: {epoch}  |"
                           f"  Train Loss: {loss}  |")
 
             if self._early_stop(epoch_idx=epoch,

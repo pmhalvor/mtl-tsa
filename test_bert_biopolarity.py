@@ -8,23 +8,14 @@
 # E-mail: eivindgg@ifi.uio.no
 
 
-try:
-    from exam.utils.preprocessing import OurDataset, pad_b
-    from exam.utils.models import Transformer, TransformerMTL
-except:
-    from utils.preprocessing import OurDataset, pad_b
-    from utils.models import Transformer, TransformerMTL
+from utils.preprocessing import OurDataset, pad_b
+from utils.models import Transformer, TransformerMTL
 
 from torch.utils.data import DataLoader
 import torch
 
 
-#NORBERT = "/cluster/shared/nlpl/data/vectors/latest/216"
 NORBERT = 'data/216'
-
-#train_file = '/cluster/projects/nn9851k/IN5550/fabior/train.conll'
-#dev_file = '/cluster/projects/nn9851k/IN5550/fabior/dev.conll'
-#test_file = '/cluster/projects/nn9851k/IN5550/fabior/test.conll'
 
 train_file = 'data/train.conll'
 dev_file = 'data/dev.conll'
@@ -86,8 +77,7 @@ test_loader = DataLoader(
 
 # x2, y2, att2 = next(iter(test_loader))
 
-model_bio = torch.load("/cluster/projects/nn9851k/IN5550/fabior/"
-                       "transformer_bio.pt")
+model_bio = torch.load("data/transformer_bio.pt")
 
 model_polarity = TransformerMTL(
     NORBERT=NORBERT,
@@ -118,4 +108,4 @@ model_polarity.fit(
 )
 
 binary_f1, propor_f1 = model_polarity.evaluate(test_loader)
-# torch.save(model_polarity, "exam/transformer_polarity_last.pt")
+torch.save(model_polarity, "data/transformer_polarity_last.pt")
