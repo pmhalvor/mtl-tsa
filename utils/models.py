@@ -1377,16 +1377,6 @@ class Transformer(torch.nn.Module):
         flat_preds = [int(i) for l in preds for i in l]
         flat_golds = [int(i) for l in golds for i in l]
 
-        print(len(sents))
-        print(f'preds')
-        print(len(preds))
-        print(len(preds[0]))
-        print(len(preds[1]))
-        print('golds')
-        print(len(golds))
-        print(len(golds[0]))
-        print(len(golds[1]))
-
         analysis = get_analysis(
             sents=sents,
             y_pred=preds,
